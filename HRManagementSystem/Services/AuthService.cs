@@ -42,5 +42,10 @@ namespace HRManagementSystem.Services
 
             return user;
         }
+        public async Task<User?> LoginAsync(LoginViewModel model)
+        {
+            return await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+        }
     }
 }

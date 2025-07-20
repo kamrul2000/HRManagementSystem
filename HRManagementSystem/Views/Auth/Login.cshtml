@@ -1,0 +1,74 @@
+﻿@model HRManagementSystem.Models.ViewModel.LoginViewModel
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+
+}
+
+<div class="auth-main">
+    <div class="auth-wrapper v3">
+      <div class="auth-form">     
+        <form asp-action="Login" method="post">
+        <div class="card my-5">
+          <div class="card-body">
+           
+            <div class="form-group mb-3">
+
+              <label asp-for="Email" class="form-label">Email Address</label>
+              <input asp-for="Email" class="form-control" placeholder="Email Address" />
+            </div>
+            <div class="form-group mb-3">
+              <label asp-for="Password" class="form-label">Password</label>
+              <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+            </div>
+            <div class="d-flex mt-1 justify-content-between">
+              <div class="form-check">
+                <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="">
+                <label class="form-check-label text-muted" for="customCheckc1">Keep me sign in</label>
+              </div>
+              <h5 class="text-secondary f-w-400">Forgot Password?</h5>
+            </div>
+            <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+             <div class="d-flex justify-content-between align-items-end mb-4">
+                            <a asp-action="Register" asp-controller="Auth" class="link-primary">Don't have an account?</a>
+            </div>
+            <div class="saprator mt-3">
+              <span>Login with</span>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="d-grid">
+                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
+                    <img src="../assets/images/authentication/google.svg" alt="img"> <span class="d-none d-sm-inline-block"> Google</span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="d-grid">
+                  <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
+                    <img src="../assets/images/authentication/twitter.svg" alt="img"> <span class="d-none d-sm-inline-block"> Twitter</span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="d-grid">
+          
+                <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted d-flex align-items-center">
+                 <img src="../assets/images/authentication/facebook.svg" alt="img" style="height: 20px;">
+                 <span class="d-none d-sm-inline-block ms-2">Facebook</span>
+               </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

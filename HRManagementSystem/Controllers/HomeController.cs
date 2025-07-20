@@ -1,9 +1,12 @@
 using System.Diagnostics;
 using HRManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagementSystem.Controllers
 {
+    [Authorize]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
