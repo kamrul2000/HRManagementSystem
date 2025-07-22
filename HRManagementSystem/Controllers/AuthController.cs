@@ -44,11 +44,12 @@ namespace HRManagementSystem.Controllers
 
             // Create claims
             var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Email),
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-                // Add more claims if needed
-            };
+{
+    new Claim(ClaimTypes.Name, user.FullName ?? user.Email), // Show FullName in UI
+    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+    new Claim(ClaimTypes.Role, user.Role?.Name ?? "User") // Add Role for display or role-based auth
+};
+
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
@@ -63,8 +64,10 @@ namespace HRManagementSystem.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login", "Auth"); 
         }
+        [HttpGet]
+
         public IActionResult Register()
         {
             return View();
@@ -89,5 +92,7 @@ namespace HRManagementSystem.Controllers
                 return View(model);
             }
         }
+
+       
     }
 }

@@ -47,5 +47,6 @@ namespace HRManagementSystem.Services
             return await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
         }
+
     }
 }
